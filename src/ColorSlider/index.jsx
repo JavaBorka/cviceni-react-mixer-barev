@@ -1,17 +1,19 @@
 import './index.css'
 
-const ColorSlider = ({colorName, baseColor}) => {
+const ColorSlider = ({colorName, baseColor, onValueChange}) => {
 
     return (
         <>
-            <label for={baseColor}>{colorName}</label>
+            <label htmlFor={baseColor}>{colorName}</label>
             <input
             type="range"
-            class={`slider slider--${baseColor}`}
+            className={`slider slider--${baseColor}`}
             id={`${baseColor}Slider`}
             min="0"
             max="255"
-            value="0"
+            onChange={(e) => {
+                onValueChange(e.target.value)
+            }}
             />
         </>
     )
